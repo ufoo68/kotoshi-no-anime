@@ -2,6 +2,7 @@ import axios from 'axios';
 import * as Line from '@line/bot-sdk';
 import * as Types from '@line/bot-sdk/lib/types';
 import * as Lambda from 'aws-lambda';
+import * as dayjs from 'dayjs';
 
 interface AnimeData {
   id: string
@@ -18,8 +19,8 @@ const config: Line.ClientConfig = {
 
 const client = new Line.Client(config);
 
-const getAnimeDatas = async (): Promise<AnimeData[]> => {
-  const res = await axios.get('http://api.moemoe.tokyo/anime/v1/master/2021');
+const getAnimeDatas = async (year: number): Promise<AnimeData[]> => {
+  const res = await axios.get(`http://api.moemoe.tokyo/anime/v1/master/${year}`);
   return res.data;
 }
 
@@ -27,8 +28,12 @@ const eventHandler = async (event: Types.MessageEvent): Promise<any> => {
   if (event.type !== 'message' || event.message.type !== 'text' || !event.source.userId) {
     return null;
   }
-  const animeDatas = await getAnimeDatas();
-  return client.replyMessage(event.replyToken, animeDatas.map(animeData => ({ type: 'text', text: animeData.title })));
+  if (event.message.text === '今年のアニメは？') {
+    const animeDatas = await getAnimeDatas(dayjs().year());
+    return client.replyMessage(event.replyToken, { type: 'text', text: animeDatas.map(animeData => animeData.title).join('\n') });
+  } else {
+    return client.replyMessage(event.replyToken, { type: 'text', text: '「今年のアニメは？」と聞いてね' });
+  }
 };
 
 export const handler = async (proxyEevent: Lambda.APIGatewayEvent) => {
