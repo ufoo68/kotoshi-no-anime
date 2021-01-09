@@ -1,5 +1,3 @@
 # AWS CDK×LINE BOTハンズオン用
 
-## 友達登録
-
-<img src="https://qr-official.line.me/sid/M/272bigtb.png">
+友達登録は[こちら](https://lin.ee/1QPbd6p)
