@@ -2,4 +2,4 @@
 
 ## 友達登録
 
-![qr](https://qr-official.line.me/sid/M/272bigtb.png)
+<img src="https://qr-official.line.me/sid/M/272bigtb.png">
