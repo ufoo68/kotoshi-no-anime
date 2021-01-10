@@ -297,7 +297,7 @@
     "@aws-cdk/core" "1.83.0"
     constructs "^3.2.0"
 
-"@aws-cdk/aws-ssm@1.83.0":
+"@aws-cdk/aws-ssm@1.83.0", "@aws-cdk/aws-ssm@^1.83.0":
   version "1.83.0"
   resolved "https://registry.yarnpkg.com/@aws-cdk/aws-ssm/-/aws-ssm-1.83.0.tgz#ea0143dc96729bfded9dbf379f9fe3745aeba6a6"
   integrity sha512-zxul2nUy0ioLaY3JbFo/VDiyum43ni9jc+Iku6lS9sgOH+Y7RnD6k7zeQ8Gpf1JJLGhkV+mjyRnu0SAEmzj0rQ==

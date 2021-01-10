@@ -9,7 +9,7 @@ interface AnimeData {
   title: string
 };
 
-const channelAccessToken = process.env.ACCESS_TOKEN!;
+const channelAccessToken = process.env.CHANNEL_ACCESS_TOKEN!;
 const channelSecret = process.env.CHANNEL_SECRET!;
 
 const config: Line.ClientConfig = {
